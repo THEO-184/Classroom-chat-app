@@ -30,6 +30,7 @@ const errorHandler = (
 
 	// cast error
 	if (err.name === "CastError") {
+		console.log("error", err);
 		customErr.msg = `No Item found with id : ${err.value}`;
 	}
 
