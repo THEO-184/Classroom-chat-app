@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
 	addLesson,
 	creatCourseHandler,
+	deleteCourse,
 	getCourse,
 	getMyCourses,
 	updateCourse,
@@ -18,7 +19,9 @@ router
 router
 	.route("/:id")
 	.get(getCourse)
-	.put(authMiddleware, isEducator, updateCourse);
+	.put(authMiddleware, isEducator, updateCourse)
+	.delete(authMiddleware, isEducator, deleteCourse);
+
 router.route("/by/:id").get(authMiddleware, isEducator, getMyCourses);
 
 export default router;

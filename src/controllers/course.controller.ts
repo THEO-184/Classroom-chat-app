@@ -105,3 +105,16 @@ export const updateCourse: RequestHandler<
 
 	res.status(StatusCodes.OK).json({ course });
 };
+
+export const deleteCourse: RequestHandler<{ id: string }> = async (
+	req,
+	res
+) => {
+	const course = await Course.findOneAndDelete({ _id: req.params.id });
+
+	if (!course) {
+		throw new NotFound("no user found with given id");
+	}
+
+	res.status(StatusCodes.OK).json({ msg: "deleted successfully" });
+};
